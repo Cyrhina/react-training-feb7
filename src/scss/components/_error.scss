@@ -1,0 +1,17 @@
+.btn--error {
+  background-color: $color-accent;
+  color: #fff;
+}
+
+.btn--error:disabled {
+  background-color: lighten($color-accent, 20%);
+  pointer-events: none;
+  color: #fff;
+}
+.error {
+  display: flex;
+  justify-content: space-between;
+}
+.error--msg {
+  color: $color-error;
+}

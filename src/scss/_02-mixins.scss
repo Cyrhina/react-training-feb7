@@ -1,0 +1,28 @@
+@mixin transition($duration: 0.5s, $ease: ease-in-out) {
+  transition-timing-function: $ease;
+  transition-duration: $duration;
+}
+
+@mixin mediaQuery($width: $break-sm) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin scrollbar($color: $color-primary) {
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color;
+    border-radius: 2rem;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: darken($color, 5);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: lighten($color, 70);
+  }
+}

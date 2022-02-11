@@ -1,0 +1,15 @@
+.parentbox {
+  position: relative;
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 25rem 1fr;
+
+    @media (max-width: 799px) {
+      grid-template-columns: 15rem 1fr;
+    }
+
+    @media (max-width: $break-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

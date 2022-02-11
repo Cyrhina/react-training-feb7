@@ -1,0 +1,91 @@
+@keyframes spinner {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg);
+  }
+}
+
+.spinner {
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  overflow-y: hidden;
+  min-height: 50px;
+  z-index: 9999999;
+
+  .center-vertically {
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .spin::before {
+    animation: 1.5s linear infinite spinner;
+    animation-play-state: inherit;
+    border: solid 5px $color-primary;
+    border-bottom-color: $color-accent;
+    border-radius: 50%;
+    content: "";
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    left: 25px;
+    transform: translate3d(-50%, -50%, 0);
+    will-change: transform;
+    z-index: 99;
+  }
+
+  span {
+    position: relative;
+    top: 20px;
+    margin: auto;
+  }
+}
+
+.spinner-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999999;
+  overflow-y: hidden;
+
+  .center-vertically {
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    right: 86%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .spin-btn::before {
+    animation: 1.5s linear infinite spinner;
+    animation-play-state: inherit;
+    border: solid 5px $color-primary;
+    border-bottom-color: $color-accent;
+    border-radius: 50%;
+    content: "";
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    transform: translate3d(-50%, -50%, 0);
+    will-change: transform;
+    z-index: 99;
+  }
+}
+
+.btn-mw {
+  min-width: 14rem;
+}

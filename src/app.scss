@@ -1,0 +1,21 @@
+@import "./scss/01-variable";
+@import "./scss/02-mixins";
+@import "./scss/03-reset";
+@import "./scss/04-base";
+@import "./scss/05-utilities";
+@import "./scss/06-animation";
+
+//components
+@import "./scss/components/sideNav";
+@import "./scss/components/header";
+@import "./scss/components/employee";
+@import "./scss/components/table";
+@import "./scss/components/dropdown";
+@import "./scss/components/modal";
+@import "./scss/components/popup";
+@import "./scss/components/spinner";
+@import "./scss/components/error";
+@import "./scss/components/tooltip";
+
+//pages
+@import "./scss/pages/pages";

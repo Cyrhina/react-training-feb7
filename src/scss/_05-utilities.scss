@@ -1,0 +1,40 @@
+@for $i from 1 through 5 {
+  .mb--#{$i} {
+    margin-bottom: #{$i}rem;
+  }
+}
+
+$positions: grid, block, flex, inline-block;
+@each $position in $positions {
+  .d {
+    &--#{$position} {
+      display: #{$position};
+    }
+  }
+}
+
+$alignments: left, center, right, justify;
+@each $alignment in $alignments {
+  .text {
+    &--#{$alignment} {
+      text-align: #{$alignment};
+    }
+  }
+}
+
+$names: (
+  "primary": $color-primary,
+  "error": $color-error,
+);
+@each $name, $value in $names {
+  .bg {
+    &--#{$name} {
+      background-color: #{$value} !important;
+    }
+  }
+  .text {
+    &--#{$name} {
+      color: #{$value};
+    }
+  }
+}
