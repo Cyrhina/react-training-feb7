@@ -8,12 +8,11 @@ const Employee = () => {
     <>
       <section className="parentbox">
         <div className="parentbox__wrapper">
-          <div className="sidenav-disapper">
+          <div className="disapper">
             <SideNav />
           </div>
           <div className="parentbox__main">
             <Header />
-
             <EmployeeTable />
           </div>
         </div>

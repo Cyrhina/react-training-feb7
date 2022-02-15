@@ -35,6 +35,9 @@ table {
 .t-center {
   text-align: center;
 }
+.t-right {
+  text-align: right;
+}
 
 .nodata {
   display: flex;
@@ -43,20 +46,20 @@ table {
   align-items: center;
 
   img {
-    width: 200px;
+    width: 100px;
   }
   &__wrapper {
-    margin-left: 5rem;
+    margin-left: 2rem;
     h3 {
       color: $color-accent;
       font-weight: bold;
-      font-size: 3rem;
-      line-height: 3rem;
+      font-size: 2rem;
+      line-height: 2rem;
     }
     p {
       color: $color-border;
-      font-size: 2rem;
-      line-height: 2rem;
+      font-size: 1.7rem;
+      line-height: 1.7rem;
       margin-top: 1rem;
     }
   }
@@ -67,6 +70,7 @@ table {
 }
 
 .load-more {
+  margin: 2rem 0;
   display: flex;
   justify-content: center;
   button {
@@ -90,12 +94,6 @@ table {
   }
 }
 
-@media (max-width: $break-md) {
-  .disapper {
-    display: none;
-  }
-}
-
 .border-color {
   display: flex;
   color: #fff;
@@ -114,4 +112,16 @@ table {
 
 .margin-l {
   margin-left: 1rem;
+}
+
+.search {
+  margin-left: 1rem;
+
+  &__button {
+    display: block;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 50%;
+    background-color: bisque;
+  }
 }

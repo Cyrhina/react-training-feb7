@@ -11,6 +11,7 @@ import ModalSuccess from "../../modal/ModalSuccess";
 import ModalConfirm from "../../modal/ModalConfirm";
 import { AiOutlineEdit, AiOutlineMail } from "react-icons/ai";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import SpinnerButton from "../../widget/SpinnerButton";
 
 const EmailTable = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -57,13 +58,14 @@ const EmailTable = () => {
 
           <div className="table">
             <div className="table__wrapper">
+              {loading && <Spinner />}
               <table>
                 <thead>
                   <tr>
                     <th>#</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th className="t-center">Action</th>
+                    <th className="t-right">Action</th>
                   </tr>
                 </thead>
 
@@ -77,7 +79,7 @@ const EmailTable = () => {
                           <td>{item.email_name}</td>
                           <td>{item.email_email}</td>
 
-                          <td className="t-center">
+                          <td className="t-right">
                             <div className="dropdown dropdown-border">
                               <span>
                                 <FaCog />
@@ -102,18 +104,16 @@ const EmailTable = () => {
                     <tr>
                       <td colSpan="5" className="row__nodata">
                         <Nodata />
-                        {loading && <Spinner />}
                       </td>
                     </tr>
                   )}
                 </tbody>
               </table>
-
-              {/* <div className="load-more">
-                <button disabled={loading ? true : false}>
-                  Load More {loading && <SpinnerButton />}
-                </button>
-              </div> */}
+            </div>
+            <div className="load-more">
+              <button disabled={loading ? true : false}>
+                Load More {loading && <SpinnerButton />}
+              </button>
             </div>
           </div>
         </div>

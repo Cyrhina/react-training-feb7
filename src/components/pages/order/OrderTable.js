@@ -64,7 +64,7 @@ const OrderTable = () => {
                     <th>#</th>
                     <th>Name</th>
                     <th className="t-center">Created Date</th>
-                    <th className="t-center">Action</th>
+                    <th className="t-right">Action</th>
                   </tr>
                 </thead>
 
@@ -78,7 +78,7 @@ const OrderTable = () => {
                           <td>{item.order_name}</td>
                           <td className="t-center">{item.order_date}</td>
 
-                          <td className="t-center">
+                          <td className="t-right">
                             <div className="dropdown dropdown-border">
                               <span>
                                 <FaCog />
@@ -109,13 +109,12 @@ const OrderTable = () => {
                   )}
                 </tbody>
               </table>
-
-              {/* <div className="load-more">
-                <button disabled={loading ? true : false}>
-                  Load More {loading && <SpinnerButton />}
-                </button>
-              </div> */}
             </div>
+            {/* <div className="load-more">
+              <button disabled={loading ? true : false}>
+                Load More {loading && <SpinnerButton />}
+              </button> 
+            </div>*/}
           </div>
         </div>
       </div>

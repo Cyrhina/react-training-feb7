@@ -64,7 +64,7 @@ const EmployeeTable = () => {
                     <th>#</th>
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <th className="t-center">Action</th>
+                    <th className="t-right">Action</th>
                   </tr>
                 </thead>
 
@@ -78,7 +78,7 @@ const EmployeeTable = () => {
                           <td>{item.profile_fname}</td>
                           <td>{item.profile_lname}</td>
 
-                          <td className="t-center">
+                          <td className="t-right">
                             <div className="dropdown dropdown-border">
                               <span>
                                 <FaCog />
@@ -104,16 +104,15 @@ const EmployeeTable = () => {
                     <tr>
                       <td colSpan="5" className="row__nodata">
                         <Nodata />
-                        {loading && <Spinner />}
                       </td>
                     </tr>
                   )}
                 </tbody>
               </table>
             </div>
-            {/* <div className="load-more">
+            <div className="load-more">
               <button>Load More</button>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

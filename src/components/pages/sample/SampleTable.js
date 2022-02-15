@@ -48,8 +48,13 @@ const SampleTable = () => {
                 <BsFillPersonFill />
               </span>
               <h2>Sample</h2>
+              <div className="search">
+                <input />
+              </div>
+              <div className="search__button">
+                <BsFillPersonFill />
+              </div>
             </div>
-
             <div className="header__wrapper">
               <button className="tooltip" title="Logout">
                 <FiLogOut />

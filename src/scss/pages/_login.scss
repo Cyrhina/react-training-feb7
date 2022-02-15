@@ -1,0 +1,94 @@
+.login {
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: grid;
+  position: fixed;
+  z-index: 9999999;
+  min-height: 100vh;
+  place-items: center;
+  background-color: #fff;
+  &__wrapper {
+    border: 1px solid $color-border;
+    border-radius: 15px;
+    width: 350px;
+    margin: 0 1rem;
+    h1 {
+      padding: 1rem 0;
+      text-align: center;
+    }
+  }
+  &__main {
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 2rem;
+
+    h2 {
+      font-weight: bold;
+      font-size: 2.5rem;
+      line-height: 2.5rem;
+    }
+    .login-input {
+      padding: 2rem 0;
+      input {
+        width: 100%;
+        padding: 0.5rem;
+      }
+    }
+  }
+  &__header {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 2rem 1rem 2rem;
+    color: $color-text;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    h2 {
+      font-size: 5rem;
+      line-height: 4rem;
+      margin-right: 1rem;
+      font-weight: bold;
+    }
+    .login-header {
+      margin-top: 1.5rem;
+      h3 {
+        line-height: 1rem;
+        font-size: 1.95rem;
+      }
+      span {
+        font-size: 1rem;
+      }
+
+      @media (max-width: $break-sm) {
+        display: block;
+      }
+
+      @media (max-width: 495px) {
+        display: none;
+      }
+    }
+  }
+}
+
+.padding-bottom {
+  padding-bottom: 1rem;
+}
+
+.submitte {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+  &__btn {
+    width: 100%;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid $color-accent;
+    background-color: $color-accent;
+  }
+  button:hover {
+    background-color: #fff;
+    background-color: lighten($color-accent, 10%);
+  }
+}

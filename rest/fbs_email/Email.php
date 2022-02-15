@@ -15,7 +15,9 @@ class Email {
     
     public function readAll() {
         $sql = "select * from {$this->tblEmail} ";
-        $sql .= "order by email_aid desc ";
+        $sql .= "order by email_aid asc ";
+        // desc -descending - z to a
+        // asc -ascending a to z
         $result = $this->connection->query($sql);
 
         return $result;

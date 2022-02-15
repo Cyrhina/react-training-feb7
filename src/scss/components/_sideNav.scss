@@ -28,6 +28,14 @@
       span {
         font-size: 1rem;
       }
+
+      @media (max-width: $break-sm) {
+        display: block;
+      }
+
+      @media (max-width: 495px) {
+        display: none;
+      }
     }
 
     button {
@@ -88,25 +96,31 @@
     }
   }
 }
-
 @media (max-width: $break-md) {
   .sidenav-header {
     display: none;
   }
 }
 
-.sidenav-show {
-  display: none;
+.show {
+  position: absolute;
+  top: -150%;
 }
 @media (max-width: $break-sm) {
-  .sidenav-show,
+  .show,
   .sidenav-header {
     display: block;
+    top: 0;
   }
 }
 
 @media (max-width: $break-sm) {
-  .sidenav-disapper {
+  .disapper {
     display: none;
   }
+}
+
+.padding {
+  padding: 1rem;
+  color: #fff;
 }

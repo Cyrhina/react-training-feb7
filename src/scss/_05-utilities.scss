@@ -30,6 +30,7 @@ $names: (
   .bg {
     &--#{$name} {
       background-color: #{$value} !important;
+      color: #fff;
     }
   }
   .text {

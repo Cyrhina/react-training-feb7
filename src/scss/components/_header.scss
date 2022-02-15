@@ -1,9 +1,21 @@
 .header {
-  padding: 1rem 0;
+  padding: 1.3rem 0;
   background-color: #fff;
   color: $color-text;
   border-bottom: 1px solid $color-border;
 
+  &__mobile {
+    header {
+      font-size: 1rem;
+      color: $color-text;
+      border: none;
+    }
+    @media (max-width: $break-sm) {
+      display: flex;
+      justify-content: space-between;
+      border: none;
+    }
+  }
   &__wrapper {
     display: flex;
     align-items: center;
@@ -30,11 +42,28 @@
       span {
         font-size: 1rem;
       }
+
+      @media (max-width: 420px) {
+        display: none;
+      }
     }
+  }
+  @media (max-width: $break-sm) {
+    padding: 0;
+  }
+}
+.hide {
+  display: none;
+}
+.burger-menu {
+  display: none;
+
+  @media (max-width: $break-sm) {
+    display: block;
   }
 }
 
-.burger-menu {
+.header-show {
   display: none;
 
   @media (max-width: $break-sm) {

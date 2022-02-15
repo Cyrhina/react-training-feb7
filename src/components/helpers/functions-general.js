@@ -59,6 +59,7 @@ export const doList = (data, setResult) => {
     setResult([]);
   } else {
     setResult(data.data);
+    //setResult([]);
   }
 };
 

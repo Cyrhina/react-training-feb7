@@ -15,7 +15,9 @@ class Profile {
     
     public function readAll() {
         $sql = "select * from {$this->tblProfile} ";
-        $sql .= "order by profile_aid desc ";
+        $sql .= "order by profile_aid asc";
+        // desc -descending -- z to a
+        // asc -ascending --a to z
         $result = $this->connection->query($sql);
 
         return $result;

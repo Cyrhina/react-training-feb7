@@ -5,12 +5,12 @@ import { AiOutlineMail, AiOutlineUnorderedList } from "react-icons/ai";
 import { devNavUrl } from "../helpers/functions-general";
 import { BsFillPersonFill } from "react-icons/bs";
 
-const SideNav = ({ isShow }) => {
+const SideNav = () => {
   return (
     <>
       <aside className="sidenav">
         <div className="sidenav__wrapper">
-          <header className="sidenav__header">
+          <header className=" sidenav__header">
             <h2>BTS</h2>
             <div className="sidenav-header">
               <h3>backend</h3>
