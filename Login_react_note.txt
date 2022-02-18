@@ -1,0 +1,81 @@
+#### CREATE ACCOUNT ####
+
+Step 1: Prepare all files
+   -- notification 
+	html folder
+		-- html-new-account.php // template for account verification
+	PHPMailder
+   -- new-account.php - use to send notification to email
+   -- reset-password.php - - use to send notification to email
+
+
+Rest 
+   -- account
+	-- Users.php - create(), updateNewPassword(), isEmailExist(), readKey()
+   	-- create-user 
+   	-- functions-user
+   	-- read-user-key
+   	-- update-user-new-pass
+
+
+Step 2: storeContext - add isSignup, add din sa StoreReducer at Action
+	-- gagamit para matrigger ang pag sesend nng email pg nagsubmit ang form
+
+Step 3: CreateAccount - component
+	-- const navigate = useNavigate() - gamit para maredirect after login sa checkinbox
+	-- add mo tong code n to para maready yun redirection nng page
+ 		React.useEffect(() => {
+   		 dispatch(setIsSignup(true));
+ 		}, []);
+	-- fetchData - update mo ang endpoint dapat ay create-user, sa pinakailalim add mo ang "navigate"
+	-- add mo to sa loob nng if statement pg true
+		if (store.isSignup) {
+     		   dispatch(setIsSignup(false));
+     		   navigate(`${devNavUrl}/checkinbox`);
+    		}
+        -- add mo to sa ilalim
+             {store.error && <ModalError />}
+
+    Note: 
+	check ang name nng input component
+
+Test mo kung mgsesend nng email na niregister mo
+
+
+
+### CREATE PASSWORD ###
+
+Step 1: Ulitin ulet yun nasa create account na step 1, pg nagawa n lahat.. doble check mo n lang
+
+Step 2: storeContext - add isPassCreated add din sa StoreReducer at Action
+	-- gagamit para matrigger ang pag sesend nng email pg nagsubmit ang form
+
+Step 3 CreatePassword 
+	-- const navigate = useNavigate() - gamit para maredirect after login sa checkinbox
+	-- add mo to para makuha ang url na my key na parameter
+		const { result } = useLoadAll(
+    			"/admin/account/read-user-key.php",
+		    	getUrlParam().get("key")
+  		);
+
+ 	-- sa initVal declare mo to
+    		users_key: getUrlParam().get("key"),
+
+  	-- para ma true agad yun state sa reducer
+  		React.useEffect(() => {
+   			 dispatch(setIsPassCreated(true));
+  		}, []);
+	-- para macheck kung my key ang url 
+  		if (getUrlParam().get("key") === null || getUrlParam().get("key") === "") {
+		    return <p>The page you're trying to view has expired or invalid.</p>;
+  		}
+	-- para macheck kung match ang password bago magfetch
+  		if (values.users_password !== values.users_confirm_password) {
+                  dispatch(setError(true));
+                  dispatch(setMessage("Your password did not match."));
+                  return;
+                }
+	-- sa fetchData - update ang endpoint, add mo ang navigate
+
+ 	-- add mo to sa ilalim
+             {store.error && <ModalError />}
