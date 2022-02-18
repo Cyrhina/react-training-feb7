@@ -68,3 +68,16 @@ export const setIsSponsor = (val) => {
     payload: val,
   };
 };
+
+export const setIsSignup = (val) => {
+  return {
+    type: "IS_SIGNUP",
+    payload: val,
+  };
+};
+export const setIsPassCreated = (val) => {
+  return {
+    type: "IS_PASSCREATED",
+    payload: val,
+  };
+};

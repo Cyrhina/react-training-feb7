@@ -121,3 +121,24 @@ export const MyCheckbox = ({ label, open, ...props }) => {
     </>
   );
 };
+
+export const ModernInputText = ({ label, ...props }) => {
+  const [field, meta] = useField(props);
+
+  return (
+    <>
+      <input
+        {...field}
+        {...props}
+        className={meta.touched && meta.error ? "error-input" : null}
+      />
+      <label className="label" htmlFor={props.id || props.name}>
+        {label}
+      </label>
+
+      {meta.touched && meta.error ? (
+        <small className="error--msg  error-show">{meta.error}</small>
+      ) : null}
+    </>
+  );
+};

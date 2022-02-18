@@ -3,30 +3,47 @@ import { Formik, Form } from "formik";
 import { InputText, ModernInputText } from "../../helpers/FormInputs";
 import { AiOutlineClose } from "react-icons/ai";
 import * as Yup from "yup";
-import { fetchData } from "../../helpers/fetchData";
-import { StoreContext } from "../../store/StoreContext";
-import { setIsSignup } from "../../store/StoreAction";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ModalError from "../../modal/ModalError";
+import {
+  setError,
+  setIsPassCreated,
+  setMessage,
+} from "../../store/StoreAction";
+import { StoreContext } from "../../store/StoreContext";
+import { getUrlParam } from "../../helpers/functions-general";
+import useLoadAll from "../../custom-hooks/useLoadAll";
+import { fetchData } from "../../helpers/fetchData";
+import SpinnerButton from "../../widget/SpinnerButton";
 
-const CreateAccount = () => {
+function CreatePassword() {
   const { store, dispatch } = React.useContext(StoreContext);
   const [loading, setLoading] = React.useState(null);
   const navigate = useNavigate();
 
+  const { result } = useLoadAll(
+    "/admin/account/read-user-key.php",
+    getUrlParam().get("key")
+  );
   const initVal = {
-    users_name: "",
-    users_email: "",
+    users_key: getUrlParam().get("key"),
+    users_password: "",
+    users_confirm_password: "",
   };
 
   const yupSchema = Yup.object({
-    users_name: Yup.string().required("Required"),
-    users_email: Yup.string().required("Required"),
+    users_password: Yup.string().required("Required"),
+    users_confirm_password: Yup.string().required("Required"),
   });
 
   React.useEffect(() => {
-    dispatch(setIsSignup(true));
+    dispatch(setIsPassCreated(true));
   }, []);
+
+  //check if the url has a key
+  if (getUrlParam().get("key") === null || getUrlParam().get("key") === "") {
+    return <p>The page you're trying to view has expired or invalid.</p>;
+  }
 
   return (
     <>
@@ -41,7 +58,7 @@ const CreateAccount = () => {
           </header>
 
           <div className="login__main">
-            <h2> Create Account</h2>
+            <h2> Create Password</h2>
             <p>Fill up all Fields</p>
             <Formik
               initialValues={initVal}
@@ -50,13 +67,19 @@ const CreateAccount = () => {
 
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 console.log(values);
+
+                if (values.users_password !== values.users_confirm_password) {
+                  dispatch(setError(true));
+                  dispatch(setMessage("Your password did not match."));
+                  return;
+                }
                 fetchData(
                   setLoading,
-                  "/admin/account/create-user.php",
+                  "/admin/account/update-user-new-pass.php",
                   values,
                   null,
                   "",
-                  "",
+                  "Email aleady exist.",
                   dispatch,
                   store,
                   true,
@@ -77,25 +100,26 @@ const CreateAccount = () => {
               </div> */}
                     <div className="login-input">
                       <ModernInputText
-                        label="Name"
-                        type="text"
-                        name="users_name"
+                        label="New Password"
+                        type="password"
+                        name="users_password"
                         required
                       />
                     </div>
                     <div className="login-input">
                       <ModernInputText
-                        label="Email"
-                        type="text"
-                        name="users_email"
+                        label="Confirm Password"
+                        type="password"
+                        name="users_confirm_password"
                         required
                       />
                     </div>
 
                     <div>
                       <div className="submitte padding-bottom">
-                        <button className="submitte__btn">
-                          Create Account
+                        <button className="submitte__btn" type="submit">
+                          Reset Password
+                          {loading && <SpinnerButton />}
                         </button>
                       </div>
                     </div>
@@ -106,9 +130,10 @@ const CreateAccount = () => {
           </div>
         </div>
       </section>
+
       {store.error && <ModalError />}
     </>
   );
-};
+}
 
-export default CreateAccount;
+export default CreatePassword;

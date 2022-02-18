@@ -1,6 +1,12 @@
 import fetchApi from "./fetchApi";
 
-import { baseUrl, devApiUrl, doList, doLoadmore } from "./functions-general";
+import {
+  baseUrl,
+  devApiUrl,
+  devNavUrl,
+  doList,
+  doLoadmore,
+} from "./functions-general";
 
 import {
   setSuccess,
@@ -9,6 +15,8 @@ import {
   setSave,
   setIsConfirm,
   setIsAdd,
+  setIsSignup,
+  setIsPassCreated,
 } from "../store/StoreAction";
 // import { checkRoleToRedirect } from "../pages/login/login-functions";
 
@@ -76,6 +84,18 @@ export const fetchData = async (
       dispatch(setMessage(successMsg));
     }
 
+    // redirect to other page after donor signup
+    if (store.isSignup) {
+      dispatch(setIsSignup(false));
+      navigate(`${devNavUrl}/checkinbox`);
+    }
+
+    // redirect to other page after donor signup
+    if (store.isPassCreated) {
+      dispatch(setIsPassCreated(false));
+      navigate(`${devNavUrl}/welcome-aboard`);
+    }
+
     // if (store.isEmail) {
     //   dispatch(setIsEmail(false));
     // }
@@ -86,7 +106,7 @@ export const fetchData = async (
     //   store.isSave ? dispatch(setSave(false)) : dispatch(setSave(true));
     // }
 
-    // // redirect to other page after login
+    // redirect to other page after login
     // if (store.isLogin) {
     //   setStorageRoute(data.data, data.mail);
     //   dispatch(setIsLogin(false));

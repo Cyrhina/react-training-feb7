@@ -59,6 +59,18 @@ export const StoreReducer = (state, action) => {
         isSponsor: action.payload,
       };
 
+    case "IS_SIGNUP":
+      return {
+        ...state,
+        isSignup: action.payload,
+      };
+
+      case "IS_PASSCREATED":
+        return {
+          ...state,
+          isPassCreated: action.payload,
+        };
+
     default:
       return state;
   }

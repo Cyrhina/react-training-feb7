@@ -12,6 +12,8 @@ const initVal = {
   startIndex: 0,
   isDonate: false,
   isSponsor: false,
+  isSignup: false,
+  isPassCreated: false,
 };
 
 const StoreContext = React.createContext();

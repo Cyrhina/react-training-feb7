@@ -3,30 +3,19 @@ import { Formik, Form } from "formik";
 import { InputText, ModernInputText } from "../../helpers/FormInputs";
 import { AiOutlineClose } from "react-icons/ai";
 import * as Yup from "yup";
-import { fetchData } from "../../helpers/fetchData";
-import { StoreContext } from "../../store/StoreContext";
-import { setIsSignup } from "../../store/StoreAction";
-import { useNavigate } from "react-router-dom";
-import ModalError from "../../modal/ModalError";
+import { Link } from "react-router-dom";
 
-const CreateAccount = () => {
-  const { store, dispatch } = React.useContext(StoreContext);
-  const [loading, setLoading] = React.useState(null);
-  const navigate = useNavigate();
-
+const Login = () => {
   const initVal = {
-    users_name: "",
-    users_email: "",
+    user_username: "",
+    user_password: "",
   };
 
   const yupSchema = Yup.object({
-    users_name: Yup.string().required("Required"),
-    users_email: Yup.string().required("Required"),
-  });
+    user_username: Yup.string().required("Required"),
 
-  React.useEffect(() => {
-    dispatch(setIsSignup(true));
-  }, []);
+    user_password: Yup.string().required("Required"),
+  });
 
   return (
     <>
@@ -41,28 +30,30 @@ const CreateAccount = () => {
           </header>
 
           <div className="login__main">
-            <h2> Create Account</h2>
-            <p>Fill up all Fields</p>
+            <h2> Welcome</h2>
+            <p>Sign in to continue</p>
             <Formik
               initialValues={initVal}
               validationSchema={yupSchema}
+              novalidate
               // value = initVal = state
 
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 console.log(values);
-                fetchData(
-                  setLoading,
-                  "/admin/account/create-user.php",
-                  values,
-                  null,
-                  "",
-                  "",
-                  dispatch,
-                  store,
-                  true,
-                  false,
-                  navigate //Redirect to the checkInbox
-                );
+                // fetchData(
+                //   setLoading,
+                //   itemEdit
+                //     ? "/fbs_profile/update-profile.php"
+                //     : "/fbs_profile/create-profile.php",
+                //   values,
+                //   null,
+                //   "",
+                //   "Email aleady exist.",
+                //   dispatch,
+                //   store,
+                //   true,
+                //   false
+                // );
               }}
             >
               {(props) => {
@@ -77,27 +68,39 @@ const CreateAccount = () => {
               </div> */}
                     <div className="login-input">
                       <ModernInputText
-                        label="Name"
+                        label="User Name"
                         type="text"
-                        name="users_name"
-                        required
-                      />
-                    </div>
-                    <div className="login-input">
-                      <ModernInputText
-                        label="Email"
-                        type="text"
-                        name="users_email"
+                        name="user_username"
                         required
                       />
                     </div>
 
+                    <div className="login-input">
+                      <ModernInputText
+                        label="Password"
+                        type="password"
+                        name="user_password"
+                        required
+                      />
+                    </div>
+                    {/* <div className="login-input input--error">
+                      <input type="password" required />
+                      <label htmlFor="">Password</label>
+                      <small className="error-msg">*Required</small>
+                    </div> */}
+
                     <div>
                       <div className="submitte padding-bottom">
-                        <button className="submitte__btn">
-                          Create Account
-                        </button>
+                        <button className="submitte__btn">Login</button>
                       </div>
+
+                      <p>
+                        Need an account? <Link to="/">Sign Up</Link>
+                      </p>
+                      <p>
+                        Did you forgot your password?
+                        <Link to="/">Recover Password</Link>
+                      </p>
                     </div>
                   </Form>
                 );
@@ -106,9 +109,8 @@ const CreateAccount = () => {
           </div>
         </div>
       </section>
-      {store.error && <ModalError />}
     </>
   );
 };
 
-export default CreateAccount;
+export default Login;
