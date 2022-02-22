@@ -66,7 +66,7 @@ Step 3 CreatePassword
    			 dispatch(setIsPassCreated(true));
   		}, []);
 	-- para macheck kung my key ang url 
-	-- ilalagay siya bago mag return
+	-- (cy added)ilalagay siya bago mag return
   		if (getUrlParam().get("key") === null || getUrlParam().get("key") === "") {
 		    return <p>The page you're trying to view has expired or invalid.</p>;
   		}
