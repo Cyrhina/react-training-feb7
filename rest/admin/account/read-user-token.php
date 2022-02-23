@@ -5,16 +5,16 @@
     try {  
         require '../../jwt/vendor/autoload.php';  
         include_once("../../common/package.php");
-        include_once("Account.php");
-        include_once("functions-account.php"); 
+        include_once("Users.php");
+        include_once("functions-user.php"); 
         $body = file_get_contents("php://input");
         $data = json_decode($body, true);
         checkInputData($data);    
         // Response::sendResponse(false, "404: Data not found.", $data["empNumber"]);
         $connection = checkConnection();
-        $account = new Account($connection);
+        $user = new Users($connection);
         $token = trim(filter_var($data["token"], FILTER_SANITIZE_STRING));
-        $account->donor_aid = trim(filter_var($data["idNumber"], FILTER_SANITIZE_STRING));
+        $user->users_aid = trim(filter_var($data["idNumber"], FILTER_SANITIZE_STRING));
 
         
         $key = "jwt_admin_ko_ito";
@@ -22,11 +22,11 @@
         if(!empty($token)){
             try {
                 $decoded = JWT::decode($token, $key, array('HS256'));
-                $account->donor_email = $decoded->data->email;
+                $user->users_email = $decoded->data->email;
                 // $email = $users->isEmailExist();
-                $email = $account->readLogin();
+                $email = $user->readLogin();
                 if($email->num_rows <= 0) {
-                    Response::sendResponse(false, "Account is invalid", $account->donor_email);
+                    Response::sendResponse(false, "user is invalid", $user->users_email);
                     exit();
                 }
                 Response::sendResponse(true, "Access granted.",  $email->fetch_assoc());

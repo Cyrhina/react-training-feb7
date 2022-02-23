@@ -4,14 +4,12 @@
   min-height: 100vh;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
   position: relative;
+  transition: 0.5ms ease;
   z-index: 99;
 
   &__header {
-    display: flex;
-    justify-content: center;
-    padding: 2rem 2rem 1rem 2rem;
+    padding: 1.3rem 0;
     color: $color-header;
-    align-items: center;
     border-bottom: 1px solid $color-border;
     h2 {
       font-size: 4rem;
@@ -19,24 +17,20 @@
       margin-right: 1rem;
       font-weight: bold;
     }
-    .sidenav-header {
-      margin-top: 1.5rem;
-      h3 {
-        line-height: 1rem;
-        font-size: 1.95rem;
-      }
-      span {
-        font-size: 1rem;
-      }
-
-      @media (max-width: $break-sm) {
-        display: block;
-      }
-
-      @media (max-width: 495px) {
-        display: none;
-      }
+    .hide-logo {
+      margin: 1rem;
     }
+    // .sidenav-header {
+    //   display: none;
+
+    //   @media (max-width: $break-md) {
+    //     display: block;
+    //     text-align: center;
+    //   }
+    //   @media (max-width: $break-sm) {
+    //     display: none;
+    //   }
+    // }
 
     button {
       background-color: transparent;
@@ -76,6 +70,14 @@
       span {
         vertical-align: middle;
         margin: 0 1rem;
+
+        @media (max-width: $break-md) {
+          display: none;
+        }
+
+        @media (max-width: $break-sm) {
+          display: block;
+        }
       }
 
       a {
@@ -84,6 +86,10 @@
 
         padding: 1.2rem;
         width: 100%;
+
+        @media (max-width: $break-sm) {
+          display: flex;
+        }
       }
 
       a.active {
@@ -93,7 +99,19 @@
           fill: $color-header;
         }
       }
+
+      @media (max-width: $break-md) {
+        text-align: center;
+      }
+
+      @media (max-width: $break-sm) {
+        text-align: left;
+      }
     }
+  }
+
+  @media (max-width: $break-sm) {
+    max-width: 50%;
   }
 }
 @media (max-width: $break-md) {
@@ -104,7 +122,7 @@
 
 .show {
   position: absolute;
-  top: -150%;
+  left: 0;
 }
 @media (max-width: $break-sm) {
   .show,

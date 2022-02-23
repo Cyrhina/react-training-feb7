@@ -1,5 +1,6 @@
 import React from "react";
 import { useField } from "formik";
+import { FaExclamationCircle } from "react-icons/fa";
 
 export const InputText = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -15,8 +16,39 @@ export const InputText = ({ label, ...props }) => {
       </div>
 
       <div>
-        <input {...field} {...props} />
+        {meta.touched && meta.error ? (
+          <div className="error__main">
+            <input {...field} {...props} />
+          </div>
+        ) : (
+          <input {...field} {...props} />
+        )}
       </div>
+    </>
+  );
+};
+
+export const InputTextLogin = ({ label, ...props }) => {
+  const [field, meta] = useField(props);
+  return (
+    <>
+      {meta.touched && meta.error ? (
+        <div className="error-label">
+          <input className="error-input" {...field} {...props} />
+          <label className="">{label}</label>
+        </div>
+      ) : (
+        <div className="t-color">
+          <input {...field} {...props} />
+          <label>{label}</label>
+        </div>
+      )}
+      {meta.touched && meta.error ? (
+        <div className="error-msg">
+          <FaExclamationCircle />
+          <span>{meta.error}</span>
+        </div>
+      ) : null}
     </>
   );
 };

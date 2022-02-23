@@ -1,6 +1,12 @@
 import fetchApi from "./fetchApi";
 
-import { baseUrl, devApiUrl, doList, doLoadmore } from "./functions-general";
+import {
+  baseUrl,
+  devApiUrl,
+  devNavUrl,
+  doList,
+  doLoadmore,
+} from "./functions-general";
 
 import {
   setSuccess,
@@ -9,6 +15,11 @@ import {
   setSave,
   setIsConfirm,
   setIsAdd,
+  setIsSignup,
+  setIsPassCreated,
+  setIsLoginSuccess,
+  setIsForgotPassSuccess,
+  setIsEmailcheck,
 } from "../store/StoreAction";
 // import { checkRoleToRedirect } from "../pages/login/login-functions";
 
@@ -74,6 +85,36 @@ export const fetchData = async (
     if (successModal) {
       dispatch(setSuccess(true));
       dispatch(setMessage(successMsg));
+    }
+    // redirect to other page after signup
+    if (store.isSignup) {
+      dispatch(setIsSignup(false));
+      navigate(`${devNavUrl}/createcheck`);
+    }
+    // redirect to other page after ilagay ung email para sa forgot password
+    if (store.isEmailcheck) {
+      dispatch(setIsEmailcheck(false));
+      navigate(`${devNavUrl}/forgotpasscheck`);
+    }
+    // redirect to other page after create password
+    if (store.isPassCreated) {
+      dispatch(setIsPassCreated(false));
+      navigate(`${devNavUrl}/createsuccess`);
+    }
+    // redirect to other page after login
+    if (store.isLoginSuccess) {
+      dispatch(setIsLoginSuccess(false));
+      navigate(`${devNavUrl}/employee`);
+    }
+    // // redirect to other page after giving email for changing pass
+    // if (store.isForgotPass) {
+    //   dispatch(setIsForgotPass(false));
+    //   navigate(`${devNavUrl}/forgotpasscheck`);
+    // }
+    // redirect to other page after creating new password
+    if (store.isForgotPassSuccess) {
+      dispatch(setIsForgotPassSuccess(false));
+      navigate(`${devNavUrl}/forgotpasssuccess`);
     }
 
     // if (store.isEmail) {

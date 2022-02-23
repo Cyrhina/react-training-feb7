@@ -1,5 +1,5 @@
 import React from "react";
-import notask from "../svg/no-task.png";
+import notask from "../img/no-task.png";
 
 const Nodata = () => {
   return (

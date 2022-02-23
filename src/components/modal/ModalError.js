@@ -1,16 +1,14 @@
 import React from "react";
-import { AiOutlineClose } from "react-icons/ai";
-import { BsCheckLg, BsPlus } from "react-icons/bs";
 import { FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import { RiCloseLine } from "react-icons/ri";
-import { setSuccess } from "../store/StoreAction";
+import { setError, setIsSignup, setSuccess } from "../store/StoreAction";
 import { StoreContext } from "../store/StoreContext";
 
 const ModalError = ({ msg }) => {
   const { store, dispatch } = React.useContext(StoreContext);
 
   const handleClose = () => {
-    dispatch(setSuccess(false));
+    dispatch(setError(false));
   };
 
   return (
@@ -24,15 +22,15 @@ const ModalError = ({ msg }) => {
           </div>
 
           <div className="dashmodal__body fixed--height  ">
-            <p className="text--center dashmodal__body__msg ">
+            <div className="text--center dashmodal__body__msg ">
               <span className=" dashmodal__body__error">
                 <i>
                   <FaExclamationCircle />
                 </i>
               </span>
-              <h2>{(msg = "Error Alerts")}</h2>
-              {(msg = "A simple Error alert--check it out!")}
-            </p>
+              <h2>Error Alerts</h2>
+              <p>{store.message}</p>
+            </div>
 
             <div className="dashmodal__footer">
               <ul>

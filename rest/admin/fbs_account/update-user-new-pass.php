@@ -9,13 +9,13 @@
         $connection = checkConnection();
         $account = new Account($connection);
         $encrypt = new Encryption();
-        $account->donor_password = $encrypt->doPasswordHash($data["donor_password"]);
-        $account->donor_key = trim(filter_var($data["donor_key"], FILTER_SANITIZE_STRING));
-        $account->donor_datetime = date("Y-m-d H:i:s"); 
+        $account->account_password = $encrypt->doPasswordHash($data["account_password"]);
+        $account->account_key = trim(filter_var($data["account_key"], FILTER_SANITIZE_STRING));
+        $account->account_datetime = date("Y-m-d H:i:s"); 
         
         $result = checkNewPassword($account);     
        
-        Response::sendResponse(true, "account password created.", []);
+        Response::sendResponse(true, "user password created.", []);
 
     }catch (Error $e) {
         Response::sendResponse(false, "Request interrupted becuase a system error occured, please contact patrick.reyes@frontlinebusiness.com.ph", "finally");

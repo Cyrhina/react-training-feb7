@@ -12,7 +12,6 @@
     include_once("html/html-new-account.php");
 	// include_once($_SERVER['DOCUMENT_ROOT'] . "/rest/notification/html/html-new-account.php");
     
-	
 	function sendEmail($email, $key, $name) {
         $mail = new PHPMailer(true);
 		$mail->isSMTP();

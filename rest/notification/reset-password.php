@@ -11,6 +11,7 @@
     include_once("mail-config.php");
     include_once("html/html-forgot-password.php");
 	
+
 	function sendEmail($email, $key, $name) {
         $mail = new PHPMailer(true);
 		$mail->isSMTP();
@@ -24,7 +25,7 @@
 		$mail->setFrom(USERNAME, FROM);
 		$mail->isHTML(true);
         $mail->Body = getHtmlForgotPassword($key, $name, ROOT_DOMAIN);
-        // // $mail->addAddress('patrick.reyes@frontlinebusiness.com.ph');
+        // $mail->addAddress('patrick.reyes@frontlinebusiness.com.ph');
         $mail->addAddress($email);
         
         if($mail->Send()){

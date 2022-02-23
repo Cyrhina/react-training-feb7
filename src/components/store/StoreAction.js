@@ -68,3 +68,38 @@ export const setIsSponsor = (val) => {
     payload: val,
   };
 };
+
+export const setIsSignup = (val) => {
+  return {
+    type: "IS_SIGNUP",
+    payload: val,
+  };
+};
+
+export const setIsPassCreated = (val) => {
+  return {
+    type: "IS_PASSCREATED",
+    payload: val,
+  };
+};
+
+export const setIsLoginSuccess = (val) => {
+  return {
+    type: "IS_LOGIN_SUCCESS",
+    payload: val,
+  };
+};
+
+export const setIsEmailcheck = (val) => {
+  return {
+    type: "IS_EMAILCHECK",
+    payload: val,
+  };
+};
+
+export const setIsForgotPassSuccess = (val) => {
+  return {
+    type: "IS_FORGOT_PASS_SUCCESS",
+    payload: val,
+  };
+};

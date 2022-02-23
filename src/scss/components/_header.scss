@@ -20,7 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin: 0 1rem;
+    margin: 1rem;
 
     img {
       border-radius: 100%;
@@ -43,7 +43,7 @@
         font-size: 1rem;
       }
 
-      @media (max-width: 420px) {
+      @media (max-width: $break-sm) {
         display: none;
       }
     }

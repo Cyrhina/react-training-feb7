@@ -11,7 +11,48 @@
 .error {
   display: flex;
   justify-content: space-between;
+
+  &__main {
+    color: $color-error;
+    border: 2px solid $color-error;
+    border-radius: 25px;
+  }
 }
 .error--msg {
   color: $color-error;
+}
+
+.btn-error {
+  border: 1px solid $color-error;
+}
+
+.error-msg {
+  display: flex;
+  align-items: center;
+  color: $color-error;
+  font-size: 1.2rem;
+  right: 0;
+  top: 3.9rem;
+  position: absolute;
+  span {
+    margin-left: 4px;
+  }
+}
+
+.error-input {
+  color: $color-error;
+  border: 1px solid $color-error;
+
+  input {
+    border: none;
+  }
+}
+.error-label {
+  label {
+    color: $color-error;
+  }
+}
+
+.error-input input:focus {
+  border: none;
 }

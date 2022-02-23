@@ -11,11 +11,12 @@ const SideNav = () => {
       <aside className="sidenav">
         <div className="sidenav__wrapper">
           <header className=" sidenav__header">
-            <h2>BTS</h2>
-            <div className="sidenav-header">
-              <h3>backend</h3>
-              <span>training system</span>
+            <div className="hide-logo">
+              <img src="./logo/bts-logo-white.svg" alt="logo" />
             </div>
+            {/* <div className="sidenav-header">
+              <img src="./logo/bts-white.svg" alt="logo" />
+            </div> */}
           </header>
 
           <main className="sidenav__main">

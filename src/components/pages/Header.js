@@ -3,7 +3,7 @@ import { IoIosArrowDown, IoIosArrowUp, IoMdLogOut } from "react-icons/io";
 import { AiFillSetting } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FiLogOut } from "react-icons/fi";
-import personone from "../svg/jhonny.png";
+import personone from "../img/jhonny.png";
 import SideNav from "./SideNav";
 import { NavLink } from "react-router-dom";
 import { devNavUrl } from "../helpers/functions-general";
@@ -18,11 +18,7 @@ function Header() {
           <div className="header__mobile">
             <div className="header-show">
               <header className="sidenav__header">
-                <h2>BTS</h2>
-                <div className="sidenav-header hide">
-                  <h3>backend</h3>
-                  <span>training system</span>
-                </div>
+                <img src="./logo/bts-black.svg" alt="logo" />
               </header>
             </div>
             <div className="header__wrapper">

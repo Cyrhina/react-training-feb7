@@ -1,10 +1,13 @@
 //LOCAL NI MON
 export const devApiUrl = "http://localhost/fbs/react-training-feb7/rest";
 
+//online host
 // development url
-//export const devApiUrl = "https://fca.edu.ph/dev-app/rest";
-export const devBaseUrl = "https://fca.edu.ph/sample";
-export const devNavUrl = "/sample";
+//export const devApiUrl = "https://training.frontlinebusiness.com.ph/rest";
+
+// development url
+export const devBaseUrl = "https://fca.edu.ph/dev-app";
+export const devNavUrl = "";
 
 // production url
 // export const devApiUrl = "https://fca.edu.ph/app/rest";

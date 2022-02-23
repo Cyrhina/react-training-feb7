@@ -65,7 +65,7 @@
     margin: 0 auto;
     position: absolute;
     top: 50%;
-    right: 86%;
+    right: 90%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
@@ -73,8 +73,8 @@
   .spin-btn::before {
     animation: 1.5s linear infinite spinner;
     animation-play-state: inherit;
-    border: solid 5px $color-primary;
-    border-bottom-color: $color-accent;
+    border: solid 5px #fff;
+    border-bottom-color: $color-accent; //lighten($color-accent, 20%)
     border-radius: 50%;
     content: "";
     height: 20px;
