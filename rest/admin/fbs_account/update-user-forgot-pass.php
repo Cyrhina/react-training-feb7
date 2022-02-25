@@ -26,7 +26,7 @@
 
         $result = checkForgotPass($account);
 
-         $mail = sendEmail($account->account_email, $account->account_key,$data[0]["account_fname"]); 
+        $mail = sendEmail($account->account_email, $account->account_key, $data[0]["account_fname"]); 
         Response::sendResponse(true, "Forgot password link successfully sent to your email.", $data, $mail);
         
        

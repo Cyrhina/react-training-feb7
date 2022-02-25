@@ -69,6 +69,7 @@ export const setIsSponsor = (val) => {
   };
 };
 
+//logins
 export const setIsSignup = (val) => {
   return {
     type: "IS_SIGNUP",
@@ -97,9 +98,72 @@ export const setIsEmailcheck = (val) => {
   };
 };
 
+export const setIsForgotPass = (val) => {
+  return {
+    type: "IS_FORGOT_PASS",
+    payload: val,
+  };
+};
+
 export const setIsForgotPassSuccess = (val) => {
   return {
     type: "IS_FORGOT_PASS_SUCCESS",
+    payload: val,
+  };
+};
+//SAMPLE #2 LOGIN
+export const setIsCostumerCreate = (val) => {
+  return {
+    type: "IS_COSTUMER_CREATE",
+    payload: val,
+  };
+};
+
+export const setIsCostumerCreatedPass = (val) => {
+  return {
+    type: "IS_COSTUMER_CREATED_PASS",
+    payload: val,
+  };
+};
+
+export const setIsCostumerForgotEmail = (val) => {
+  return {
+    type: "IS_COSTUMER_FORGOT_EMAIL",
+    payload: val,
+  };
+};
+
+export const setIsCostumerForgotSuccess = (val) => {
+  return {
+    type: "IS_COSTUMER_FORGOT_SUCCESS",
+    payload: val,
+  };
+};
+//SAMPLE #3 LOGIN
+export const setIsUserCreate = (val) => {
+  return {
+    type: "IS_USER_CREATE",
+    payload: val,
+  };
+};
+
+export const setIsUserCreatedPass = (val) => {
+  return {
+    type: "IS_USER_CREATED_PASS",
+    payload: val,
+  };
+};
+
+export const setIsUserForgotEmail = (val) => {
+  return {
+    type: "IS_USER_FORGOT_EMAIL",
+    payload: val,
+  };
+};
+
+export const setIsUserForgotSuccess = (val) => {
+  return {
+    type: "IS_USER_FORGOT_SUCCESS",
     payload: val,
   };
 };

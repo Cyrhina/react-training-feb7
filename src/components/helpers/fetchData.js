@@ -20,6 +20,15 @@ import {
   setIsLoginSuccess,
   setIsForgotPassSuccess,
   setIsEmailcheck,
+  setIsForgotPass,
+  setIsCostumerCreate,
+  setIsCostumerCreatedPass,
+  setIsCostumerForgotEmail,
+  setIsCostumerForgotSuccess,
+  setIsUserCreate,
+  setIsUserCreatedPass,
+  setIsUserForgotEmail,
+  setIsUserForgotSuccess,
 } from "../store/StoreAction";
 // import { checkRoleToRedirect } from "../pages/login/login-functions";
 
@@ -80,43 +89,96 @@ export const fetchData = async (
       dispatch(setIsConfirm(false));
       store.isSave ? dispatch(setSave(false)) : dispatch(setSave(true));
     }
-
     // success modal will be closed when used
     if (successModal) {
       dispatch(setSuccess(true));
       dispatch(setMessage(successMsg));
     }
-    // redirect to other page after signup
-    if (store.isSignup) {
-      dispatch(setIsSignup(false));
-      navigate(`${devNavUrl}/createcheck`);
-    }
-    // redirect to other page after ilagay ung email para sa forgot password
-    if (store.isEmailcheck) {
-      dispatch(setIsEmailcheck(false));
-      navigate(`${devNavUrl}/forgotpasscheck`);
-    }
-    // redirect to other page after create password
-    if (store.isPassCreated) {
-      dispatch(setIsPassCreated(false));
-      navigate(`${devNavUrl}/createsuccess`);
-    }
+
+    //LOGIN
     // redirect to other page after login
     if (store.isLoginSuccess) {
       dispatch(setIsLoginSuccess(false));
       navigate(`${devNavUrl}/employee`);
     }
-    // // redirect to other page after giving email for changing pass
-    // if (store.isForgotPass) {
-    //   dispatch(setIsForgotPass(false));
-    //   navigate(`${devNavUrl}/forgotpasscheck`);
-    // }
+    // redirect to other page after signup ng new account
+    if (store.isSignup) {
+      dispatch(setIsSignup(false));
+      navigate(`${devNavUrl}/createcheck`);
+    }
+
+    // redirect to other page after mag create ng password
+    if (store.isEmailcheck) {
+      dispatch(setIsEmailcheck(false));
+      navigate(`${devNavUrl}/forgotpasscheck`);
+    }
+
+    // redirect to other page after mag create ng password
+    if (store.isPassCreated) {
+      dispatch(setIsPassCreated(false));
+      navigate(`${devNavUrl}/createsuccess`);
+    }
+
+    // redirect to other page after giving email for changing password
+    if (store.isForgotPass) {
+      dispatch(setIsForgotPass(false));
+      navigate(`${devNavUrl}/forgotpasscheck`);
+    }
     // redirect to other page after creating new password
     if (store.isForgotPassSuccess) {
       dispatch(setIsForgotPassSuccess(false));
       navigate(`${devNavUrl}/forgotpasssuccess`);
     }
 
+    //LOGIN ANOTHER SAMPLE 2
+    // redirect to other page after signup ng new account
+    if (store.isCostumerCreate) {
+      dispatch(setIsCostumerCreate(false));
+      navigate(`${devNavUrl}/sentemail`);
+    }
+
+    // redirect to other page after GUMAWA NG PASSWORD
+    if (store.isCostumerCreatedPass) {
+      dispatch(setIsCostumerCreatedPass(false));
+      navigate(`${devNavUrl}/customer-newpasscreated`);
+    }
+
+    // redirect to other page pag merong nag match na email
+    if (store.isCostumerForgotEmail) {
+      dispatch(setIsCostumerForgotEmail(false));
+      navigate(`${devNavUrl}/customer-forgotemail`);
+    }
+
+    // redirect to other page after makapag gawa ng bagong password
+    if (store.isCostumerForgotSuccess) {
+      dispatch(setIsCostumerForgotSuccess(false));
+      navigate(`${devNavUrl}/customer-newpasscreated`);
+    }
+
+    //LOGIN ANOTHER SAMPLE 3
+    // redirect to other page after signup ng new account
+    if (store.isUserCreate) {
+      dispatch(setIsUserCreate(false));
+      navigate(`${devNavUrl}/usercreate-email`);
+    }
+
+    // redirect to other page after GUMAWA NG PASSWORD
+    if (store.isUserCreatedPass) {
+      dispatch(setIsUserCreatedPass(false));
+      navigate(`${devNavUrl}/usercreated`);
+    }
+
+    // redirect to other page pag merong nag match na email
+    if (store.isUserForgotEmail) {
+      dispatch(setIsUserForgotEmail(false));
+      navigate(`${devNavUrl}/userforgot-email`);
+    }
+
+    // redirect to other page after makapag gawa ng bagong password
+    if (store.isUserForgotSuccess) {
+      dispatch(setIsUserForgotSuccess(false));
+      navigate(`${devNavUrl}/usernewpass`);
+    }
     // if (store.isEmail) {
     //   dispatch(setIsEmail(false));
     // }

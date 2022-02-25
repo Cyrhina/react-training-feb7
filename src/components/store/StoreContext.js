@@ -12,11 +12,20 @@ const initVal = {
   startIndex: 0,
   isDonate: false,
   isSponsor: false,
-  isSignup: false,
-  isPassCreated: false,
   isLoginSuccess: false,
+  isSignup: false,
   isEmailcheck: false,
+  isPassCreated: false,
+  isForgotPass: false,
   isForgotPassSuccess: false,
+  isCostumerCreate: false,
+  isCostumerCreatedPass: false,
+  isCostumerForgotEmail: false,
+  isCostumerForgotSuccess: false,
+  isUserCreate: false,
+  isUserCreatedPass: false,
+  isUserForgotEmail: false,
+  isUserForgotSuccess: false,
 };
 
 const StoreContext = React.createContext();

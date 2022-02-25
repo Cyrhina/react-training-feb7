@@ -8,6 +8,7 @@ try{
         $data = json_decode($body, true);
         $connection = checkConnection();
         checkInputData($data);  
+        
         $profile = new Profile ($connection);
         $profile->profile_aid = filter_var($data["id"], FILTER_SANITIZE_STRING);  
         $result = checkDelete($profile);

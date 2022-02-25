@@ -3,7 +3,7 @@
         include_once("../../common/package.php");
         include_once("Users.php");
         include_once("functions-user.php"); 
-        // include_once("../../notification/new-account.php");        
+        include_once("../../notification/new-account.php");        
         
         $body = file_get_contents("php://input");       
         $data = json_decode($body, true);               

@@ -4,12 +4,14 @@
         include_once("Users.php");
         include_once("functions-user.php"); 
         include_once("../../notification/reset-password.php");
+
         $body = file_get_contents("php://input");
         $data = json_decode($body, true);
         checkInputData($data);    
         $connection = checkConnection();
         $user = new Users($connection);
         $encrypt = new Encryption();
+        
         $user->users_email = trim(filter_var($data["users_email"], FILTER_SANITIZE_STRING));
         $user->users_key = $encrypt->doHash(rand());  
         $user->users_datetime = date("Y-m-d H:i:s");     

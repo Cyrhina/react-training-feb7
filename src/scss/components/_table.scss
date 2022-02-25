@@ -115,13 +115,19 @@ table {
 }
 
 .search {
-  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  &__wrapper {
+    margin-left: 1rem;
+  }
+  input {
+    padding: 1rem;
+    max-width: 600px;
+  }
 
   &__button {
-    display: block;
-    align-items: center;
-    padding: 1rem;
-    border-radius: 50%;
-    background-color: bisque;
+    padding: 0.8rem;
+    background-color: rgb(18, 18, 151);
+    color: #fff;
   }
 }

@@ -59,6 +59,7 @@ export const StoreReducer = (state, action) => {
         isSponsor: action.payload,
       };
 
+    //LOGIN
     case "IS_SIGNUP":
       return {
         ...state,
@@ -71,7 +72,7 @@ export const StoreReducer = (state, action) => {
         isPassCreated: action.payload,
       };
 
-    case "IS_LOGINSUCCESS":
+    case "IS_LOGIN_SUCCESS":
       return {
         ...state,
         isLogin: action.payload,
@@ -83,10 +84,65 @@ export const StoreReducer = (state, action) => {
         isEmailcheck: action.payload,
       };
 
-    case "IS_FORGOTPASSSUCCESS":
+    case "IS_FORGOT_PASS":
+      return {
+        ...state,
+        isForgotPass: action.payload,
+      };
+
+    case "IS_FORGOT_PASS_SUCCESS":
       return {
         ...state,
         isForgotPassSuccess: action.payload,
+      };
+    //SAMPLE #2 LOGIN
+    case "IS_COSTUMER_CREATE":
+      return {
+        ...state,
+        isCostumerCreate: action.payload,
+      };
+
+    case "IS_COSTUMER_CREATED_PASS":
+      return {
+        ...state,
+        isCostumerCreatedPass: action.payload,
+      };
+
+    case "IS_COSTUMER_FORGOT_EMAIL":
+      return {
+        ...state,
+        isCostumerForgotEmail: action.payload,
+      };
+
+    case "IS_COSTUMER_FORGOT_SUCCESS":
+      return {
+        ...state,
+        isCostumerForgotSuccess: action.payload,
+      };
+
+    //SAMPLE #3 LOGIN
+    case "IS_USER_CREATE":
+      return {
+        ...state,
+        isUserCreate: action.payload,
+      };
+
+    case "IS_USER_CREATED_PASS":
+      return {
+        ...state,
+        isUserCreatedPass: action.payload,
+      };
+
+    case "IS_USER_FORGOT_EMAIL":
+      return {
+        ...state,
+        isUserForgotEmail: action.payload,
+      };
+
+    case "IS_USER_FORGOT_SUCCESS":
+      return {
+        ...state,
+        isUserForgotSuccess: action.payload,
       };
 
     default:
