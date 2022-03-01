@@ -4,7 +4,7 @@
   min-height: 100vh;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
   position: relative;
-  transition: 0.5ms ease;
+  transition: 5s ease;
   z-index: 99;
 
   &__header {
@@ -111,7 +111,9 @@
   }
 
   @media (max-width: $break-sm) {
-    max-width: 50%;
+    max-width: 150px;
+    width: 100%;
+    min-height: 114.7vh;
   }
 }
 @media (max-width: $break-md) {
@@ -121,8 +123,10 @@
 }
 
 .show {
-  position: absolute;
+  display: none;
+  position: fixed;
   left: 0;
+  z-index: 9;
 }
 @media (max-width: $break-sm) {
   .show,
@@ -141,4 +145,8 @@
 .padding {
   padding: 1rem;
   color: #fff;
+}
+
+.min-height-130vh {
+  min-height: 130.2vh;
 }

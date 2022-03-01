@@ -14,9 +14,6 @@ const SideNav = () => {
             <div className="hide-logo">
               <img src="./logo/bts-logo-white.svg" alt="logo" />
             </div>
-            {/* <div className="sidenav-header">
-              <img src="./logo/bts-white.svg" alt="logo" />
-            </div> */}
           </header>
 
           <main className="sidenav__main">
@@ -58,6 +55,16 @@ const SideNav = () => {
                 >
                   <AiOutlineMail />
                   <span>sample</span>
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to={`${devNavUrl}/sample-costumer`}
+                  className={(navData) => (navData.isActive ? "active" : "")}
+                >
+                  <AiOutlineMail />
+                  <span>Costumer</span>
                 </NavLink>
               </li>
             </ul>

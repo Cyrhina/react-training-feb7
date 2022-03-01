@@ -10,6 +10,7 @@ import { setError, setIsConfirm, setMessage } from "../store/StoreAction";
 import { fetchData } from "../helpers/fetchData";
 import { StoreContext } from "../store/StoreContext";
 import SpinnerButton from "../widget/SpinnerButton";
+import ModalError from "./ModalError";
 
 const ModalConfirm = ({
   id,
@@ -86,6 +87,8 @@ const ModalConfirm = ({
           </div>
         </div>
       </div>
+
+      {store.error && <ModalError />}
     </>
   );
 };

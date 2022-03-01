@@ -1,7 +1,7 @@
 import React from "react";
 import EmployeeTable from "../backend/employee/EmployeeTable";
-import Header from "../frontend/Header";
-import SideNav from "../frontend/SideNav";
+import Header from "./Header";
+import SideNav from "./SideNav";
 
 const Employee = () => {
   return (

@@ -1,22 +1,23 @@
 import React from "react";
 import { BsFillPersonFill, BsPlusLg } from "react-icons/bs";
-import { FaCaretDown, FaCog } from "react-icons/fa";
+import { FaCog, FaSearch } from "react-icons/fa";
 import { StoreContext } from "../../../store/StoreContext";
 import { setIsAdd, setIsConfirm } from "../../../store/StoreAction";
+import ModalAddEmployee from "./modal/ModalAddCustomer";
 import Spinner from "../../../widget/Spinner";
 import Nodata from "../../../widget/Nodata";
 import useLoadAll from "../../../custom-hooks/useLoadAll";
 import ModalSuccess from "../../../modal/ModalSuccess";
 import ModalConfirm from "../../../modal/ModalConfirm";
-import ModalAddOrder from "./modal/ModalAddOrder";
 import { AiOutlineEdit, AiOutlineUnorderedList } from "react-icons/ai";
-import SpinnerButton from "../../../widget/SpinnerButton";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { IoIosArrowDown } from "react-icons/io";
+import { FiLogOut, FiSearch } from "react-icons/fi";
 import ModalError from "../../../modal/ModalError";
 
-const OrderTable = () => {
+const CustomerTable = () => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const { loading, result } = useLoadAll("/fbs_orders/read-order.php");
+  const { loading, result } = useLoadAll("/fbs_customer/read-customer.php");
   const [itemEdit, setItemEdit] = React.useState(null);
   const [id, setId] = React.useState(null);
   const [isDel, setDel] = React.useState(false);
@@ -34,7 +35,13 @@ const OrderTable = () => {
   const handleDelete = (item) => {
     dispatch(setIsConfirm(true));
     setDel(true);
-    setId(item.order_aid);
+    setId(item.customer_aid);
+  };
+
+  const handleArchive = (item) => {
+    dispatch(setIsConfirm(true));
+    setDel(false);
+    setId(item.customer_aid);
   };
   let count = 0;
 
@@ -45,13 +52,13 @@ const OrderTable = () => {
           <span>
             <AiOutlineUnorderedList />
           </span>
-          <h2>order</h2>
+          <h2>Customer</h2>
         </div>
         <button className="border-color" onClick={handleAdd}>
           <span>
             <BsPlusLg />
           </span>
-          <h2>Order</h2>
+          <h2>Customer</h2>
         </button>
       </div>
 
@@ -61,9 +68,10 @@ const OrderTable = () => {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th className="t-center">Created Date</th>
-                <th className="t-right">Action</th>
+                <th>First Name</th>
+                <th>Created Date</th>
+                <th>Active</th>
+                <th className="t-center">Action</th>
               </tr>
             </thead>
 
@@ -72,17 +80,19 @@ const OrderTable = () => {
                 result.map((item, key) => {
                   count += 1;
                   return (
-                    <tr key={item.profile_aid}>
+                    <tr key={item.customer_aid}>
                       <td>{count}</td>
-                      <td>{item.order_name}</td>
-                      <td className="t-center">{item.order_date}</td>
+                      <td>{item.customer_fullname}</td>
+                      <td>{item.customer_date}</td>
+                      <td>{item.customer_active}</td>
 
-                      <td className="t-right">
+                      <td className="t-center">
                         <div className="dropdown dropdown-border">
                           <span>
                             <FaCog />
-                            <FaCaretDown />
+                            <IoIosArrowDown />
                           </span>
+
                           <div className="dropdown-content">
                             <button onClick={() => handleEdit(item)}>
                               <AiOutlineEdit />
@@ -91,6 +101,10 @@ const OrderTable = () => {
                             <button onClick={() => handleDelete(item)}>
                               <RiDeleteBin5Line />
                               <span>Delete</span>
+                            </button>
+                            <button onClick={() => handleArchive(item)}>
+                              <RiDeleteBin5Line />
+                              <span>Archive</span>
                             </button>
                           </div>
                         </div>
@@ -110,23 +124,22 @@ const OrderTable = () => {
           </table>
         </div>
         {/* <div className="load-more">
-              <button disabled={loading ? true : false}>
-                Load More {loading && <SpinnerButton />}
-              </button> 
-            </div>*/}
+              <button>Load More</button>
+            </div> */}
       </div>
-      {/* {store.success && <ModalSuccess msg={"Success"} />} */}
+      {/* {store.success && <ModalSuccess />} */}
       {store.error && <ModalError />}
-      {store.isAdd && <ModalAddOrder itemEdit={itemEdit} />}
+      {store.isAdd && <ModalAddEmployee itemEdit={itemEdit} />}
       {store.isConfirm && (
         <ModalConfirm
           id={id}
           isDel={isDel}
-          mysqlApiDelete={"/fbs_orders/delete-order.php"}
+          mysqlApiDelete={"/fbs_customer/delete-customer.php"}
+          mysqlApiArchive={"/fbs_customer/active-customer.php"}
           msg={
             isDel
-              ? "Are you sure you want to delete this "
-              : "Are you sure you want to archive this"
+              ? "A simple Delete alert--check it out!"
+              : "A simple Archive alert--check it out!"
           }
         />
       )}
@@ -134,4 +147,4 @@ const OrderTable = () => {
   );
 };
 
-export default OrderTable;
+export default CustomerTable;

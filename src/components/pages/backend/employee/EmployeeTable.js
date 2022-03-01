@@ -12,6 +12,7 @@ import ModalConfirm from "../../../modal/ModalConfirm";
 import { AiOutlineEdit } from "react-icons/ai";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { IoIosArrowDown } from "react-icons/io";
+import ModalError from "../../../modal/ModalError";
 
 const EmployeeTable = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -113,6 +114,7 @@ const EmployeeTable = () => {
         </div>
       </div>
       {/* {store.success && <ModalSuccess />} */}
+      {store.error && <ModalError />}
       {store.isAdd && <ModalAddEmployee itemEdit={itemEdit} />}
       {store.isConfirm && (
         <ModalConfirm

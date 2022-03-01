@@ -38,6 +38,7 @@ import UserForgotPass from "./components/pages/signup/user/forgot-pass/UserForgo
 import UserForgotPassCheck from "./components/pages/signup/user/forgot-pass/UserForgotPassCheck";
 import UserForgotPassCreate from "./components/pages/signup/user/forgot-pass/UserForgotPassCreate";
 import UserForgotPassSuccess from "./components/pages/signup/user/forgot-pass/UserForgotPassSuccess";
+import SampleCustomer from "./components/pages/frontend/SampleCustomer";
 function App() {
   return (
     <div className="App">
@@ -151,6 +152,10 @@ function App() {
             <Route path={`${devNavUrl}/order`} element={<Order />} />
             <Route path={`${devNavUrl}/email`} element={<Email />} />
             <Route path={`${devNavUrl}/sample`} element={<Sample />} />
+            <Route
+              path={`${devNavUrl}/sample-costumer`}
+              element={<SampleCustomer />}
+            />
           </Routes>
         </Router>
       </StoreProvider>

@@ -1,9 +1,9 @@
 import React from "react";
-import EmailTable from "../backend/email/EmailTable";
+import CustomerTable from "../backend/samplecustomer/CustomerTable";
 import Header from "./Header";
 import SideNav from "./SideNav";
 
-const Email = () => {
+const SampleCustomer = () => {
   return (
     <>
       <section className="parentbox">
@@ -13,9 +13,10 @@ const Email = () => {
           </div>
           <div className="parentbox__main">
             <Header />
+
             <div className="profile">
               <div className="container">
-                <EmailTable />
+                <CustomerTable />
               </div>
             </div>
           </div>
@@ -25,4 +26,4 @@ const Email = () => {
   );
 };
 
-export default Email;
+export default SampleCustomer;

@@ -13,6 +13,7 @@ import { AiFillSetting, AiOutlineEdit } from "react-icons/ai";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { IoIosArrowDown } from "react-icons/io";
 import { FiLogOut, FiSearch } from "react-icons/fi";
+import ModalError from "../../../modal/ModalError";
 
 const SampleTable = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -141,6 +142,7 @@ const SampleTable = () => {
             </div> */}
       </div>
       {/* {store.success && <ModalSuccess />} */}
+      {store.error && <ModalError />}
       {store.isAdd && <ModalAddEmployee itemEdit={itemEdit} />}
       {store.isConfirm && (
         <ModalConfirm

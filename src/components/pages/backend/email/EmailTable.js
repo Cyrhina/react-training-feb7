@@ -12,6 +12,7 @@ import { AiOutlineEdit, AiOutlineMail } from "react-icons/ai";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import SpinnerButton from "../../../widget/SpinnerButton";
 import { BsPlusLg } from "react-icons/bs";
+import ModalError from "../../../modal/ModalError";
 
 const EmailTable = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -115,6 +116,7 @@ const EmailTable = () => {
         </div>
       </div>
       {/* {store.success && <ModalSuccess msg={"Success"} />} */}
+      {store.error && <ModalError />}
       {store.isAdd && <ModalAddEmail itemEdit={itemEdit} />}
       {store.isConfirm && (
         <ModalConfirm
